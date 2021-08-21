@@ -7,3 +7,5 @@ npm i -g @angular/cli
 npm i -g ionic
 
 ionic start eshop blank
+ionic serve
+ionic build
