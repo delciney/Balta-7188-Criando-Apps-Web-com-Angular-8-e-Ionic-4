@@ -9,3 +9,4 @@ npm i -g ionic
 ionic start eshop blank
 ionic serve
 ionic build
+ionic generate page pages/account/login
