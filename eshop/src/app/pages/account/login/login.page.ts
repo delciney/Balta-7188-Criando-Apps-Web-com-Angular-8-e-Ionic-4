@@ -74,6 +74,7 @@ export class LoginPage implements OnInit {
   async showError(message) {
     const error = await this.toastCtrl.create({
       message,
+      color: 'danger',
       buttons: [
         {
           icon: 'close',
