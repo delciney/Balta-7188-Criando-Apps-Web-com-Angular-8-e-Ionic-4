@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/data.service';
-import { SecurityUtil } from 'src/app/utils/security.util';
 import { UserModel } from 'src/app/models/user.model';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,7 +12,8 @@ export class LoginPage implements OnInit {
   public hide = true;
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private navCtrl: NavController,
@@ -30,14 +29,13 @@ export class LoginPage implements OnInit {
         Validators.required
       ])]
     });
-  }
+   }
 
   ngOnInit() {
   }
 
   async submit() {
-    if (this.form.invalid)
-      {return;}
+    if (this.form.invalid) {return;}
 
     const loading = await this.loadingCtrl.create({ message: 'Autenticando...' });
     loading.present();
@@ -47,7 +45,7 @@ export class LoginPage implements OnInit {
       .authenticate(this.form.value)
       .subscribe(
         (res: UserModel) => {
-          SecurityUtil.set(res);
+          //SecurityUtil.set(res);
           loading.dismiss();
           this.navCtrl.navigateRoot('/');
         },
@@ -57,23 +55,23 @@ export class LoginPage implements OnInit {
         });
   }
 
-  async resetPassword() {
-    // eslint-disable-next-line @typescript-eslint/dot-notation
-    if (this.form.controls['username'].invalid) {
-      this.showError('Usuário inválido');
-      return;
-    }
-
-    const loading = await this.loadingCtrl.create({ message: 'Restaurando sua senha...' });
-    loading.present();
-  }
-
   toggleHide() {
     this.hide = !this.hide;
   }
 
   async showError(message) {
-    const error = await this.toastCtrl.create({ message, });
+    const error = await this.toastCtrl.create({
+      message,
+      buttons: [
+        {
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {},
+        },
+      ],
+      duration: 2000,
+    });
     error.present();
   }
+
 }

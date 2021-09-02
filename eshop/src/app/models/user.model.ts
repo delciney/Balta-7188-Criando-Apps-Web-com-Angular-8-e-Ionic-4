@@ -1,12 +1,12 @@
 export class UserModel {
-  constructor(
+    constructor(
       public email: string,
       public image: string,
       public name: string,
       public roles: string[],
       public token: string,
-      public username: string,
-  ) {
+      public username: string
+    ){
 
-  }
+    }
 }
