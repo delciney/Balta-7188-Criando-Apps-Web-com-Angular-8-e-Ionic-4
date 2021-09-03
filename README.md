@@ -10,3 +10,5 @@ ionic start eshop blank
 ionic serve
 ionic build
 ionic generate page pages/account/login
+ionic generate module components
+ionic g c components/loading
