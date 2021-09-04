@@ -12,3 +12,8 @@ ionic build
 ionic generate page pages/account/login
 ionic generate module components
 ionic g c components/loading
+ionic g c components/monthly-sales-chart
+ionic g c components/navbar
+ionic g c components/order-list
+ionic g c components/order-status-badge
+ionic g c components/user-card
